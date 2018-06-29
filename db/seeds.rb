@@ -22,6 +22,21 @@
 ##end
 
 
+family = Project.create! title: "Family"
+todo = Todo.create! text: "Buy a milk", is_completed: false, project: family
+todo = Todo.create! text: "Car repair", is_completed: false, project: family
+todo = Todo.create! text: "Send mail to drandma", is_completed: true, project: family
+todo = Todo.create! text: "Pay the rent", is_completed: false, project: family
+todo = Todo.create! text: "Pick up shoes", is_completed: false, project: family
+
+job = Project.create! title: "Job"
+todo = Todo.create! text: "Call customer", is_completed: true, project: job
+todo = Todo.create! text: "Send documents", is_completed: false, project: job
+todo = Todo.create! text: "ill in the report", is_completed: true, project: job
+
+other = Project.create! title: "Other"
+todo = Todo.create! text: "Call a friend", is_completed: false, project: other
+todo = Todo.create! text: "Prepare for trip", is_completed: false, project: other
 
 
 
