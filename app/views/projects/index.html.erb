@@ -1,0 +1,36 @@
+<h1>Projects</h1>
+
+  <% Project.all.each do |project| %>
+    
+      <h2><%= project.title %></h2>
+	  <% project.todos.all.each do |todo| %>
+		<p><%= todo.text %></p>
+	  <% end %>
+	  
+  <% end %>
+  
+<button type="button" id="hider">+</button>
+  
+<div id="addTaskForm">  
+
+<h2>New task</h2>
+
+<%= form_with scope: :todo, url: projects_path, local: true, :html => {:id=>'form_id'} do |form| %>
+  <p>
+     <%= form.text_field :text %>
+  </p>
+
+  <div class="field">
+    <%= form.collection_select :project_id, Project.all, :id, :title %>
+  </div>
+    
+  <%= link_to "Отмена", root_path %>
+   
+  <%= link_to 'OK', "#", :onclick => "eventSubmit(event)" %>
+     
+<% end %>
+
+</div> 
+
+
+  

@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+##seed_file = Rails.root.join('db', 'seed.yml')
+##config = HashWithIndifferentAccess.new(YAML::load_file(seed_file))
+#Project.create!(config)
+
+#seed_file = File.join(Rails.root, 'db', 'seed.yml')
+#config = YAML::load_file(seed_file)
+#Project.create!(config["projects"])
+#config = HashWithIndifferentAccess.new(YAML::load_file(seed_file))
+
+
+
+##config["projects"].each do |p|
+##Project.create!(p)
+##end
+
+
+
+
+
+
+

@@ -10,6 +10,21 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+
+function eventSubmit(event) {
+	event.preventDefault();
+    document.getElementById("form_id").submit();
+	return false
+}
+
+$(document).ready(function() {
+  $("#hider").click(function(event) {
+    event.preventDefault();
+    $("#addTaskForm").toggle();
+  });
+});
