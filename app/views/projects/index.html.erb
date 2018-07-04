@@ -1,36 +1,57 @@
-<h1>Projects</h1>
+<div id="header">
+  <h1>Projects</h1>
+  <button type="button" id="hider" data-popup-open="popup-1">+</button>
+</div>
 
-  <% Project.all.each do |project| %>
+<div class="container">
+  <div class="row">
+    <% @projects.each do |project| %>
+      <div id="padding" class="col-lg-4" class="col-md-6">
+        <div id="project_pad">
+          <h2><%= project.title %></h2>
+          <hr>
+          <% project.todos.all.each do |todo| %>
+            <li id="todo_task" todo_task_id="<%= todo.id %>">
+
+              <%= form_for todo, url: project_path(todo.id), method: "PATCH", :html => {:class=>'checkbox_form'} do |f| %>
+
+                <!-- <input type="checkbox" class='icheck-me' data-skin="square" data-color="blue" id="<%= todo.id %>" onclick="checkboxSubmit(event)"> -->
+
+                <%= f.check_box :is_completed,
+                  :class => "icheck-me",
+                  skin: "square",
+                  data: { "color" => "blue"} %>
+                  <!-- todo_task_id="<%= todo.id %>" -->
+              
+              <% end %>
+
+              <p for="todo_is_completed" class ="str" id="pId<%= todo.id %>"><%= todo.text %></p>
+              <%= link_to '✕', project_path(todo.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              :class=>'delete_btn'%>
+            </li>
+          <% end %>
+        </div> <!-- project pads -->
+      </div> <!-- main columns -->
+    <% end %>
+  </div> <!-- row -->
+</div> <!-- container -->
+
+<div class="popup" data-popup="popup-1">
+  <div class="popup-inner">
+
+    <h2>New task</h2>
+    <hr>
+    <%= form_with scope: :todo, url: projects_path, local: true, :html => {:id=>'form_data_field'} do |form| %>
+      <%= form.text_field :text, placeholder: "Ender your task..." %>
+      <div class="collection_field">
+        <%= form.collection_select :project_id, @projects, :id, :title, {:include_blank => 'Select category'}, {:id => 'sel2'} %>
+      </div>
+    <% end %>
+
+    <a data-popup-close="popup-1" href="" id="canc_btn">Cancel</a>
+    <%= link_to 'OK', "#", :onclick => "eventSubmit(event)", :id=>'ok_btn' %>
     
-      <h2><%= project.title %></h2>
-	  <% project.todos.all.each do |todo| %>
-		<p><%= todo.text %></p>
-	  <% end %>
-	  
-  <% end %>
-  
-<button type="button" id="hider">+</button>
-  
-<div id="addTaskForm">  
-
-<h2>New task</h2>
-
-<%= form_with scope: :todo, url: projects_path, local: true, :html => {:id=>'form_id'} do |form| %>
-  <p>
-     <%= form.text_field :text %>
-  </p>
-
-  <div class="field">
-    <%= form.collection_select :project_id, Project.all, :id, :title %>
   </div>
-    
-  <%= link_to "Отмена", root_path %>
-   
-  <%= link_to 'OK', "#", :onclick => "eventSubmit(event)" %>
-     
-<% end %>
-
-</div> 
-
-
-  
+</div>

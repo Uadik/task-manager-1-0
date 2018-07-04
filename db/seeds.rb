@@ -6,39 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-##seed_file = Rails.root.join('db', 'seed.yml')
-##config = HashWithIndifferentAccess.new(YAML::load_file(seed_file))
-#Project.create!(config)
+#proj_file = Rails.root.join('db', 'seeds', 'projects.yml')
+#proj_config = HashWithIndifferentAccess.new(YAML::load_file(proj_file))
+#proj_config["project"].each do |p|
+#  Project.create!(proj_config)
+#end
 
-#seed_file = File.join(Rails.root, 'db', 'seed.yml')
-#config = YAML::load_file(seed_file)
-#Project.create!(config["projects"])
-#config = HashWithIndifferentAccess.new(YAML::load_file(seed_file))
+#todo_file = Rails.root.join('db', 'seeds', 'todos.yml')
+#todo_config = HashWithIndifferentAccess.new(YAML::load_file(todo_file))
+#todo_config["todo"].each {|key, params| puts "#{key} =!> #{params}"}
+#  Todo.create!(todo_config)
+#end
 
+#puts todo_config
 
+seed_file = Rails.root.join('db', 'seed.yml')
+config = HashWithIndifferentAccess.new(YAML::load_file(seed_file))
 
-##config["projects"].each do |p|
-##Project.create!(p)
-##end
-
-
-family = Project.create! title: "Family"
-todo = Todo.create! text: "Buy a milk", is_completed: false, project: family
-todo = Todo.create! text: "Car repair", is_completed: false, project: family
-todo = Todo.create! text: "Send mail to drandma", is_completed: true, project: family
-todo = Todo.create! text: "Pay the rent", is_completed: false, project: family
-todo = Todo.create! text: "Pick up shoes", is_completed: false, project: family
-
-job = Project.create! title: "Job"
-todo = Todo.create! text: "Call customer", is_completed: true, project: job
-todo = Todo.create! text: "Send documents", is_completed: false, project: job
-todo = Todo.create! text: "ill in the report", is_completed: true, project: job
-
-other = Project.create! title: "Other"
-todo = Todo.create! text: "Call a friend", is_completed: false, project: other
-todo = Todo.create! text: "Prepare for trip", is_completed: false, project: other
-
-
-
-
-
+config["projects"].each do |p|
+  project = Project.create!(title: p["title"])
+  #puts p["title"]
+  p["todos"].each do |t|
+  	kekus = t.merge(project: project)
+  	Todo.create!(kekus)
+  	#puts t
+  end
+end

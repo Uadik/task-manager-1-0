@@ -1,0 +1,33 @@
+projects:
+ - title:  Family
+   todos:
+    - text:  Buy a milk
+      is_completed: false
+    - text:  Car repair
+      is_completed: false
+    - text:  Send mail to drandma
+      is_completed: true
+    - text:  Pay the rent
+      is_completed: false
+    - text:  Pick up shoes
+      is_completed: false
+ - title:  Job
+   todos:
+    - text:  Call customer 
+      is_completed: true
+    - text:  Send documents
+      is_completed: true
+    - text:  Fill in the report
+      is_completed: false
+ - title:  Hobby
+   todos:
+    - text:  Learn new song
+      is_completed: false
+    - text:  Buy new strings
+      is_completed: true     
+ - title:  Other
+   todos:
+    - text:  Call a friend
+      is_completed: false
+    - text:  Prepare for a trip
+      is_completed: false

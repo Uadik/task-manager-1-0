@@ -1,0 +1,211 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ * require_tree .
+ * require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'icheck/square/blue';
+
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src:font-url('OpenSans-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Semibold';
+  src:font-url('OpenSans-Semibold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Light';
+  src:font-url('OpenSans-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+	background-color: #F8F8F8;
+}
+#header {
+	padding-left: 80px;
+	height: 80px;
+	background-color: #3AAFDA;
+	color: white;
+	text-align: center;
+	margin-bottom: 15px;
+}
+#header h1 {
+	display: inline-block;
+	font-family: OpenSans-Light;
+	line-height: 80px;
+	margin: auto;
+}
+#hider {	
+	float: right;
+	display: inline-block;
+	z-index: 5;
+	height: 80px;
+	width: 80px;
+    border: none;
+    background-color: #3AAFDA;
+    color: white;
+    background: url(/images/addTodoIcon.png) no-repeat;
+    background-position: center;
+}
+#hider:hover {
+    background-color: RoyalBlue;
+}
+/*ProjectPads*/
+#project_pad {
+	padding: 10px 0px 0px 0px;
+	background-color: white;
+/*	min-height: 80px;
+	min-width: 350px;
+	margin-top: 20px;*/
+	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+#padding {
+	padding: 15px;
+}
+#project_pad h2 {
+	font-family: OpenSans-Semibold;
+	margin: 0px 15px 10px 15px;
+	/*margin-left: 15px
+	margin-top: 10px;
+	margin-bottom: 10px;*/
+	font-size: 16px;
+}
+hr {
+	margin: 0;
+}
+
+/*ToDoStrings*/
+#todo_task {
+	list-style-type:none;
+	word-wrap: break-word;
+	margin-left: 15px;
+	margin-right: 15px; 
+	font-family: OpenSans-Regular;
+	line-height: 40px;
+}
+.icheck-me {
+	display: inline;
+}
+#todo_task p {
+	display: inline;
+	margin-left: 11px;
+}
+#todo_task:hover {
+	.delete_btn {
+		visibility: visible;
+	}
+}
+.delete_btn {
+	color: red;
+	font-size: 9pt;
+	float: right;
+	text-decoration: none!important;
+	visibility: hidden;
+	line-height: 40px;
+}
+
+input[class=todo_is_completed]:checked + p {
+  text-decoration: line-through;
+}
+
+/*popup*/
+/* Outer */
+.popup {
+	width:100%;
+	height:100%;
+	display:none;
+	position:fixed;
+	top:0px;
+	left:0px;
+	background:rgba(0,0,0,0.75);
+}
+/* Inner */
+.popup-inner {
+	max-width:700px;
+	width:30%;
+	padding:10px 0px 0px 0px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%, -50%);
+	transform:translate(-50%, -50%);
+	box-shadow:0px 2px 6px rgba(0,0,0,1);
+	background: white;
+}
+.popup-inner h2 {
+	font-family: OpenSans-Semibold;
+	margin: auto auto 10px auto;
+	font-size: 16px;
+	text-align: center;
+	line-height: 25px;
+}
+#ok_btn {
+	display: inline-block;
+	background-color: #3AAFDA;
+	color: white;
+	line-height: 40px;
+	width: 46%;
+	float: right;
+	margin: 10px 2.5% 10px 0;
+	text-align: center;
+	text-decoration: none;
+}
+#canc_btn {
+	display: inline-block;
+	background-color: grey;
+	color: white;
+	line-height: 40px;
+	width: 46%;
+	float: left;
+	margin: 10px 3% 10px 2.5%;
+	text-align: center;
+	text-decoration: none;
+}
+
+/*data_field*/
+#todo_text {
+	height: 40px;
+	width: 95%;
+	margin: 10px 2.5% 10px 2.5%;
+	padding-left: 16px;
+}
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+   height: 40px !important;
+   margin: 0 2.5% 0 2.5%;
+   span {
+       line-height: 40px !important;
+       text-align: left;
+   }
+}
+[class^='select2'] {
+  border-radius: 0px !important;
+}
+/*search disable*/
+.select2-search__field {
+    display:none
+}
+
+.checkbox_form {
+	display: inline-block;
+	float: left;
+}
